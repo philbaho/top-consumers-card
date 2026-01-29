@@ -8,6 +8,24 @@ A beautiful and modern Home Assistant card to display your top energy consumers 
 
 ![Top Consumers Card](https://via.placeholder.com/800x400/1a1a1a/ffffff?text=Top+Consumers+Card+Preview)
 
+## 📦 Available Versions
+
+### Version 1.0 (Recommended)
+**File:** `top-consumers-card.js`  
+**Configuration:** YAML-based  
+**Stability:** ✅ Stable  
+**HACS:** Yes
+
+Simple YAML configuration, works everywhere.
+
+### Version 2.0 (Advanced)
+**File:** `top-consumers-card-v2.js`  
+**Configuration:** Visual editor  
+**Stability:** 🧪 New  
+**HACS:** Manual install
+
+Includes a visual configuration editor for easier setup.
+
 ## ✨ Features
 
 - 🎨 **Modern Design** - Beautiful gradient bars with smooth animations
@@ -34,9 +52,13 @@ A beautiful and modern Home Assistant card to display your top energy consumers 
 
 ### Manual Installation
 
-1. Download `top-consumers-card.js` from the [latest release](https://github.com/yourusername/top-consumers-card/releases)
-2. Copy it to your `config/www/` folder
-3. Add the resource in your `configuration.yaml`:
+**For V1:** Download `top-consumers-card.js`  
+**For V2:** Download `top-consumers-card-v2.js`
+
+Copy to `/config/www/` and add resource:
+- V1: `/local/top-consumers-card.js`
+- V2: `/local/top-consumers-card-v2.js`
+- Add the resource in your `configuration.yaml`:
 ```yaml
 lovelace:
   resources:
@@ -77,6 +99,18 @@ entities:
 ```
 
 ## ⚙️ Configuration
+
+### V1 Configuration (YAML)
+[exemples YAML existants...]
+
+### V2 Configuration (Visual Editor)
+1. Add the card from the UI
+2. The visual editor will open automatically
+3. Configure entities, icons, and colors using dropdowns
+4. Click "Save"
+
+No YAML needed! 🎉
+```
 
 ### Card Options
 
