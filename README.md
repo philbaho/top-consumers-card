@@ -1,0 +1,302 @@
+# Top Consumers Card
+
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
+[![GitHub Release](https://img.shields.io/github/release/yourusername/top-consumers-card.svg)](https://github.com/yourusername/top-consumers-card/releases)
+[![License](https://img.shields.io/github/license/yourusername/top-consumers-card.svg)](LICENSE)
+
+A beautiful and modern Home Assistant card to display your top energy consumers with colorful gradients and real-time power monitoring.
+
+![Top Consumers Card](https://via.placeholder.com/800x400/1a1a1a/ffffff?text=Top+Consumers+Card+Preview)
+
+## ✨ Features
+
+- 🎨 **Modern Design** - Beautiful gradient bars with smooth animations
+- 📊 **Auto-Sorting** - Automatically sorts by power consumption (highest first)
+- ⚡ **Real-time Updates** - Live power monitoring
+- 🎭 **28 Icons** - Choose from a variety of emojis for each appliance
+- 🌈 **12 Color Gradients** - Customize colors for each consumer
+- 📱 **Responsive** - Optimized for desktop and mobile
+- 🔢 **Flexible** - Display from 1 to 20 items
+- 🖱️ **Interactive** - Click any item to see more details
+
+## 📦 Installation
+
+### HACS (Recommended)
+
+1. Open HACS in your Home Assistant instance
+2. Go to "Frontend"
+3. Click the three dots menu (top right) and select "Custom repositories"
+4. Add this repository URL: `https://github.com/yourusername/top-consumers-card`
+5. Category: `Lovelace`
+6. Click "Add"
+7. Find "Top Consumers Card" in the list and click "Install"
+8. Restart Home Assistant
+
+### Manual Installation
+
+1. Download `top-consumers-card.js` from the [latest release](https://github.com/yourusername/top-consumers-card/releases)
+2. Copy it to your `config/www/` folder
+3. Add the resource in your `configuration.yaml`:
+```yaml
+lovelace:
+  resources:
+    - url: /local/top-consumers-card.js
+      type: module
+```
+4. Restart Home Assistant
+
+## 🚀 Quick Start
+
+Add this to your dashboard in edit mode (Manual card):
+
+```yaml
+type: custom:top-consumers-card
+title: "⚡ Top 5 Consumers"
+max_items: 5
+entities:
+  - entity: sensor.water_heater_power
+    name: Water Heater
+    icon: fire
+    gradient: red
+  - entity: sensor.ac_power
+    name: Air Conditioning
+    icon: snowflake
+    gradient: blue
+  - entity: sensor.kitchen_power
+    name: Kitchen
+    icon: pan
+    gradient: orange
+  - entity: sensor.living_room_power
+    name: Living Room
+    icon: tv
+    gradient: purple
+  - entity: sensor.office_power
+    name: Office
+    icon: computer
+    gradient: green
+```
+
+## ⚙️ Configuration
+
+### Card Options
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | string | **Required** | `custom:top-consumers-card` |
+| `title` | string | `"⚡ Top 5 Consumers"` | Card title |
+| `max_items` | number | `5` | Number of items to display (1-20) |
+| `entities` | list | **Required** | List of entities to monitor |
+
+### Entity Options
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `entity` | string | **Required** | Entity ID (must be a power sensor) |
+| `name` | string | Entity name | Display name |
+| `icon` | string | `plug` | Icon identifier (see list below) |
+| `gradient` | string | `blue` | Gradient color (see list below) |
+
+### Available Icons
+
+**Energy & Electricity:**
+- `fire` 🔥, `bolt` ⚡, `plug` 🔌, `bulb` 💡, `battery` 🔋, `sun` ☀️
+
+**Climate:**
+- `snowflake` ❄️, `thermometer` 🌡️, `wind` 💨, `heater` ♨️, `fan` 🌀
+
+**Kitchen:**
+- `pan` 🍳, `coffee` ☕, `microwave` 🥘, `fridge` 🧊, `dishwasher` 🍽️, `cooking` 👨‍🍳
+
+**Entertainment:**
+- `tv` 📺, `computer` 🖥️, `gaming` 🎮, `speaker` 🔊, `music` 🎵
+
+**Home:**
+- `home` 🏠, `shower` 🚿, `laundry` 🧺, `door` 🚪, `window` 🪟, `water` 💧
+
+### Available Gradients
+
+- `red` - Hot red (perfect for heaters)
+- `blue` - Cool blue (perfect for AC)
+- `green` - Nature green
+- `orange` - Sunny orange (perfect for kitchen)
+- `purple` - Mystic purple
+- `pink` - Tender pink
+- `cyan` - Ocean cyan
+- `teal` - Turquoise
+- `yellow` - Bright yellow
+- `indigo` - Deep indigo
+- `lime` - Lime green
+- `amber` - Amber
+
+## 📋 Examples
+
+### Example 1: Top 3 Consumers Only
+
+```yaml
+type: custom:top-consumers-card
+title: "🔥 Top 3 Power Hungry"
+max_items: 3
+entities:
+  - entity: sensor.water_heater_power
+    name: Water Heater
+    icon: fire
+    gradient: red
+  - entity: sensor.ac_power
+    name: Air Conditioning
+    icon: snowflake
+    gradient: blue
+  - entity: sensor.kitchen_power
+    name: Kitchen
+    icon: pan
+    gradient: orange
+```
+
+### Example 2: Complete Home Monitoring (Top 10)
+
+```yaml
+type: custom:top-consumers-card
+title: "⚡ Top 10 Consumers"
+max_items: 10
+entities:
+  - entity: sensor.water_heater_power
+    name: Water Heater
+    icon: fire
+    gradient: red
+  - entity: sensor.ac_power
+    name: Air Conditioning
+    icon: snowflake
+    gradient: blue
+  - entity: sensor.kitchen_outlets_power
+    name: Kitchen Outlets
+    icon: pan
+    gradient: orange
+  - entity: sensor.living_room_power
+    name: Living Room
+    icon: tv
+    gradient: purple
+  - entity: sensor.office_power
+    name: Office
+    icon: computer
+    gradient: indigo
+  - entity: sensor.dishwasher_power
+    name: Dishwasher
+    icon: dishwasher
+    gradient: cyan
+  - entity: sensor.washing_machine_power
+    name: Washing Machine
+    icon: laundry
+    gradient: teal
+  - entity: sensor.dryer_power
+    name: Dryer
+    icon: heater
+    gradient: amber
+  - entity: sensor.garage_power
+    name: Garage
+    icon: door
+    gradient: yellow
+  - entity: sensor.outdoor_lights_power
+    name: Outdoor Lights
+    icon: bulb
+    gradient: lime
+```
+
+### Example 3: Kitchen Specific Monitoring
+
+```yaml
+type: custom:top-consumers-card
+title: "🍳 Kitchen Power Usage"
+max_items: 5
+entities:
+  - entity: sensor.oven_power
+    name: Oven
+    icon: cooking
+    gradient: amber
+  - entity: sensor.microwave_power
+    name: Microwave
+    icon: microwave
+    gradient: orange
+  - entity: sensor.dishwasher_power
+    name: Dishwasher
+    icon: dishwasher
+    gradient: cyan
+  - entity: sensor.fridge_power
+    name: Refrigerator
+    icon: fridge
+    gradient: blue
+  - entity: sensor.coffee_maker_power
+    name: Coffee Maker
+    icon: coffee
+    gradient: yellow
+```
+
+## 💡 Tips & Tricks
+
+### Auto-Sorting
+The card automatically sorts entities by current power consumption. You can add up to 20 entities, and only the top N (defined by `max_items`) will be displayed.
+
+### Easy to Add/Remove Entities
+To add a new entity, simply copy these 4 lines and modify them:
+```yaml
+  - entity: sensor.your_entity
+    name: Display Name
+    icon: plug
+    gradient: blue
+```
+
+### Click for Details
+Click on any consumer bar to open the entity details dialog with full history and information.
+
+### Responsive Design
+The card automatically adapts to screen size:
+- Desktop: Large bars with full information
+- Mobile: Compact bars optimized for touch
+
+## 🐛 Troubleshooting
+
+### Card not showing up
+1. Make sure you've added the resource in configuration
+2. Clear your browser cache (Ctrl+F5)
+3. Check browser console for errors
+
+### "Aucune donnée disponible" message
+- Verify your entity IDs are correct
+- Check that entities have numeric values
+- Ensure entities have a unit of measurement (W, kW, etc.)
+
+### Entities not sorting correctly
+- The card sorts by the `state` value of each entity
+- Make sure all entities are power sensors with numeric values
+
+## 📝 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Inspired by the need for better energy monitoring in Home Assistant
+- Thanks to the Home Assistant community
+- Built with ❤️ for smart home enthusiasts
+
+## 📬 Support
+
+- 🐛 [Report a Bug](https://github.com/yourusername/top-consumers-card/issues)
+- 💡 [Request a Feature](https://github.com/yourusername/top-consumers-card/issues)
+- 💬 [Discussion Forum](https://github.com/yourusername/top-consumers-card/discussions)
+
+---
+
+**If you like this card, please ⭐ star the repository!**
