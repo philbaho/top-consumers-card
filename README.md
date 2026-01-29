@@ -1,7 +1,8 @@
 # Top Consumers Card
 
+[![Latest Release V1](https://img.shields.io/badge/V1%20(YAML)-v1.0.0-blue)](https://github.com/yourusername/top-consumers-card/releases/tag/v1.0.0)
+[![Latest Release V2](https://img.shields.io/badge/V2%20(Editor)-v2.0.0-green)](https://github.com/yourusername/top-consumers-card/releases/tag/v2.0.0)
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
-[![GitHub Release](https://img.shields.io/github/release/yourusername/top-consumers-card.svg)](https://github.com/yourusername/top-consumers-card/releases)
 [![License](https://img.shields.io/github/license/yourusername/top-consumers-card.svg)](LICENSE)
 
 A beautiful and modern Home Assistant card to display your top energy consumers with colorful gradients and real-time power monitoring.
@@ -10,21 +11,23 @@ A beautiful and modern Home Assistant card to display your top energy consumers 
 
 ## 📦 Available Versions
 
-### Version 1.0 (Recommended)
+### Version 1.0 - YAML Configuration (Recommended)
 **File:** `top-consumers-card.js`  
 **Configuration:** YAML-based  
-**Stability:** ✅ Stable  
-**HACS:** Yes
+**Stability:** ✅ Stable and tested  
+**HACS:** Yes (default)
 
-Simple YAML configuration, works everywhere.
+Perfect for users who prefer YAML configuration. Simple, stable, and works everywhere.
 
-### Version 2.0 (Advanced)
+### Version 2.0 - Visual Editor (New!)
 **File:** `top-consumers-card-v2.js`  
-**Configuration:** Visual editor  
-**Stability:** 🧪 New  
+**Configuration:** Visual editor with dropdowns  
+**Stability:** 🆕 New release  
 **HACS:** Manual install
 
-Includes a visual configuration editor for easier setup.
+Configure your card using a visual interface - no YAML needed! Add entities, choose icons and colors from dropdown menus.
+
+---
 
 ## ✨ Features
 
@@ -37,9 +40,11 @@ Includes a visual configuration editor for easier setup.
 - 🔢 **Flexible** - Display from 1 to 20 items
 - 🖱️ **Interactive** - Click any item to see more details
 
+---
+
 ## 📦 Installation
 
-### HACS (Recommended)
+### Via HACS (V1 only)
 
 1. Open HACS in your Home Assistant instance
 2. Go to "Frontend"
@@ -52,22 +57,31 @@ Includes a visual configuration editor for easier setup.
 
 ### Manual Installation
 
-**For V1:** Download `top-consumers-card.js`  
-**For V2:** Download `top-consumers-card-v2.js`
-
-Copy to `/config/www/` and add resource:
-- V1: `/local/top-consumers-card.js`
-- V2: `/local/top-consumers-card-v2.js`
-- Add the resource in your `configuration.yaml`:
-```yaml
-lovelace:
-  resources:
-    - url: /local/top-consumers-card.js
-      type: module
-```
+#### For Version 1 (YAML)
+1. Download [`top-consumers-card.js`](https://github.com/yourusername/top-consumers-card/releases/latest/download/top-consumers-card.js) from the latest release
+2. Copy it to your `config/www/` folder
+3. Add the resource in Home Assistant:
+   - Go to Settings → Dashboards → Resources
+   - Click "Add Resource"
+   - URL: `/local/top-consumers-card.js`
+   - Type: JavaScript Module
 4. Restart Home Assistant
 
+#### For Version 2 (Visual Editor)
+1. Download [`top-consumers-card-v2.js`](https://github.com/yourusername/top-consumers-card/releases/tag/v2.0.0) from the v2.0.0 release
+2. Copy it to your `config/www/` folder
+3. Add the resource in Home Assistant:
+   - Go to Settings → Dashboards → Resources
+   - Click "Add Resource"
+   - URL: `/local/top-consumers-card-v2.js`
+   - Type: JavaScript Module
+4. Restart Home Assistant
+
+---
+
 ## 🚀 Quick Start
+
+### Version 1 - YAML Configuration
 
 Add this to your dashboard in edit mode (Manual card):
 
@@ -98,25 +112,30 @@ entities:
     gradient: green
 ```
 
-## ⚙️ Configuration
+### Version 2 - Visual Editor
 
-### V1 Configuration (YAML)
-[exemples YAML existants...]
+1. In edit mode, click **"Add Card"**
+2. Search for **"Top Consumers Card V2"**
+3. The visual editor opens automatically! 🎉
+4. Configure using the interface:
+   - Set title and max items
+   - Click **"➕ Add Entity"** to add consumers
+   - Choose entity from your list
+   - Select icon from dropdown (28 choices)
+   - Select color from dropdown (12 gradients)
+5. Click **"Save"**
 
-### V2 Configuration (Visual Editor)
-1. Add the card from the UI
-2. The visual editor will open automatically
-3. Configure entities, icons, and colors using dropdowns
-4. Click "Save"
+No YAML needed! ✨
 
-No YAML needed! 🎉
-```
+---
+
+## ⚙️ Configuration Reference
 
 ### Card Options
 
 | Name | Type | Default | Description |
 |------|------|---------|-------------|
-| `type` | string | **Required** | `custom:top-consumers-card` |
+| `type` | string | **Required** | `custom:top-consumers-card` or `custom:top-consumers-card-v2` |
 | `title` | string | `"⚡ Top 5 Consumers"` | Card title |
 | `max_items` | number | `5` | Number of items to display (1-20) |
 | `entities` | list | **Required** | List of entities to monitor |
@@ -133,19 +152,19 @@ No YAML needed! 🎉
 ### Available Icons
 
 **Energy & Electricity:**
-- `fire` 🔥, `bolt` ⚡, `plug` 🔌, `bulb` 💡, `battery` 🔋, `sun` ☀️
+`fire` 🔥, `bolt` ⚡, `plug` 🔌, `bulb` 💡, `battery` 🔋, `sun` ☀️
 
 **Climate:**
-- `snowflake` ❄️, `thermometer` 🌡️, `wind` 💨, `heater` ♨️, `fan` 🌀
+`snowflake` ❄️, `thermometer` 🌡️, `wind` 💨, `heater` ♨️, `fan` 🌀
 
 **Kitchen:**
-- `pan` 🍳, `coffee` ☕, `microwave` 🥘, `fridge` 🧊, `dishwasher` 🍽️, `cooking` 👨‍🍳
+`pan` 🍳, `coffee` ☕, `microwave` 🥘, `fridge` 🧊, `dishwasher` 🍽️, `cooking` 👨‍🍳
 
 **Entertainment:**
-- `tv` 📺, `computer` 🖥️, `gaming` 🎮, `speaker` 🔊, `music` 🎵
+`tv` 📺, `computer` 🖥️, `gaming` 🎮, `speaker` 🔊, `music` 🎵
 
 **Home:**
-- `home` 🏠, `shower` 🚿, `laundry` 🧺, `door` 🚪, `window` 🪟, `water` 💧
+`home` 🏠, `shower` 🚿, `laundry` 🧺, `door` 🚪, `window` 🪟, `water` 💧
 
 ### Available Gradients
 
@@ -162,9 +181,11 @@ No YAML needed! 🎉
 - `lime` - Lime green
 - `amber` - Amber
 
+---
+
 ## 📋 Examples
 
-### Example 1: Top 3 Consumers Only
+### Example 1: Top 3 Consumers (V1)
 
 ```yaml
 type: custom:top-consumers-card
@@ -185,56 +206,7 @@ entities:
     gradient: orange
 ```
 
-### Example 2: Complete Home Monitoring (Top 10)
-
-```yaml
-type: custom:top-consumers-card
-title: "⚡ Top 10 Consumers"
-max_items: 10
-entities:
-  - entity: sensor.water_heater_power
-    name: Water Heater
-    icon: fire
-    gradient: red
-  - entity: sensor.ac_power
-    name: Air Conditioning
-    icon: snowflake
-    gradient: blue
-  - entity: sensor.kitchen_outlets_power
-    name: Kitchen Outlets
-    icon: pan
-    gradient: orange
-  - entity: sensor.living_room_power
-    name: Living Room
-    icon: tv
-    gradient: purple
-  - entity: sensor.office_power
-    name: Office
-    icon: computer
-    gradient: indigo
-  - entity: sensor.dishwasher_power
-    name: Dishwasher
-    icon: dishwasher
-    gradient: cyan
-  - entity: sensor.washing_machine_power
-    name: Washing Machine
-    icon: laundry
-    gradient: teal
-  - entity: sensor.dryer_power
-    name: Dryer
-    icon: heater
-    gradient: amber
-  - entity: sensor.garage_power
-    name: Garage
-    icon: door
-    gradient: yellow
-  - entity: sensor.outdoor_lights_power
-    name: Outdoor Lights
-    icon: bulb
-    gradient: lime
-```
-
-### Example 3: Kitchen Specific Monitoring
+### Example 2: Kitchen Monitoring (V1)
 
 ```yaml
 type: custom:top-consumers-card
@@ -263,12 +235,32 @@ entities:
     gradient: yellow
 ```
 
+### Example 3: Complete Home (V2 - Use Visual Editor)
+
+Just add the card and configure with the visual interface!
+
+---
+
 ## 💡 Tips & Tricks
 
-### Auto-Sorting
-The card automatically sorts entities by current power consumption. You can add up to 20 entities, and only the top N (defined by `max_items`) will be displayed.
+### V1 vs V2 - Which to Choose?
 
-### Easy to Add/Remove Entities
+**Choose V1 if:**
+- ✅ You prefer YAML configuration
+- ✅ You want HACS automatic updates
+- ✅ You want maximum stability
+- ✅ You're comfortable with config files
+
+**Choose V2 if:**
+- ✅ You prefer visual configuration
+- ✅ You want dropdown menus for icons/colors
+- ✅ You like clicking buttons instead of typing
+- ✅ You want to try the latest features
+
+### Auto-Sorting
+Both versions automatically sort entities by current power consumption. You can add up to 20 entities, and only the top N (defined by `max_items`) will be displayed.
+
+### Easy Configuration (V1)
 To add a new entity, simply copy these 4 lines and modify them:
 ```yaml
   - entity: sensor.your_entity
@@ -277,33 +269,39 @@ To add a new entity, simply copy these 4 lines and modify them:
     gradient: blue
 ```
 
+### Easy Configuration (V2)
+Just click **"➕ Add Entity"** and fill the form!
+
 ### Click for Details
 Click on any consumer bar to open the entity details dialog with full history and information.
 
-### Responsive Design
-The card automatically adapts to screen size:
-- Desktop: Large bars with full information
-- Mobile: Compact bars optimized for touch
+---
 
 ## 🐛 Troubleshooting
 
 ### Card not showing up
-1. Make sure you've added the resource in configuration
+1. Make sure you've added the resource correctly
 2. Clear your browser cache (Ctrl+F5)
 3. Check browser console for errors
+4. Verify the file is in `/config/www/`
+
+### V2 Editor not appearing
+- Make sure you're using `type: custom:top-consumers-card-v2`
+- Try clearing browser cache completely
+- Check that you downloaded the V2 file, not V1
 
 ### "Aucune donnée disponible" message
 - Verify your entity IDs are correct
 - Check that entities have numeric values
 - Ensure entities have a unit of measurement (W, kW, etc.)
 
-### Entities not sorting correctly
-- The card sorts by the `state` value of each entity
-- Make sure all entities are power sensors with numeric values
+---
 
 ## 📝 Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for version history.
+
+---
 
 ## 🤝 Contributing
 
@@ -315,15 +313,23 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
+
+---
+
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
 
 ## 🙏 Acknowledgments
 
 - Inspired by the need for better energy monitoring in Home Assistant
 - Thanks to the Home Assistant community
 - Built with ❤️ for smart home enthusiasts
+
+---
 
 ## 📬 Support
 
